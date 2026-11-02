@@ -39,3 +39,33 @@ h1{
     border: 0;
     
 }
+
+.login {
+    width: min(100% - 32px, 360px);
+    margin: 80px auto;
+}
+
+.login h1 {
+    padding: 0 0 16px;
+}
+
+.login form {
+    display: grid;
+    gap: 10px;
+}
+
+.login input,
+.login button,
+#logout {
+    padding: 10px;
+    font: inherit;
+}
+
+#login-error {
+    color: #b00020;
+    margin: 0;
+}
+
+#logout {
+    margin: 0 0 16px;
+}

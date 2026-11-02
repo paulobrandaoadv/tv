@@ -7,10 +7,16 @@
     <link rel="stylesheet" href="style.css">
 
     <title>tv</title>
+    <script>
+        if (sessionStorage.getItem("tv_demo_logged_in") !== "true") {
+            window.location.replace("login.html");
+        }
+    </script>
 </head>
 
 <body>
     <h1>Minha Lista de Reprodução</h1>
+    <button id="logout" type="button">Sair</button>
     <div class="menu">
         <ul>
             <li> <a href="https://sinalpublicoetv.vercel.app/?id=ae" target="player">AE</a></li>
@@ -87,6 +93,12 @@
 
         </main>
     </div>
+    <script>
+        document.querySelector("#logout").addEventListener("click", () => {
+            sessionStorage.removeItem("tv_demo_logged_in");
+            window.location.replace("login.html");
+        });
+    </script>
 </body>
 
 </html>
