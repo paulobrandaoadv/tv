@@ -76,24 +76,34 @@ button:focus-visible,
 
 .menu {
     display: flex;
-    align-items: flex-start;
-    gap: 24px;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
     width: min(1440px, 100%);
     margin: 0 auto;
     padding: 0 clamp(16px, 3vw, 40px) 32px;
 }
 
 .menu ul {
-    display: grid;
-    flex: 0 0 220px;
+    display: flex;
+    flex: 0 0 auto;
     gap: 8px;
-    max-height: calc(100vh - 130px);
+    width: 100%;
     margin: 0;
-    padding: 0 6px 0 0;
-    overflow-y: auto;
+    padding: 2px 2px 8px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x proximity;
     list-style: none;
     scrollbar-color: #465675 transparent;
     scrollbar-width: thin;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+}
+
+.menu li {
+    flex: 0 0 auto;
+    scroll-snap-align: start;
 }
 
 .menu li + li {
@@ -101,7 +111,8 @@ button:focus-visible,
 }
 
 .menu a {
-    display: block;
+    display: flex;
+    align-items: center;
     min-height: 44px;
     padding: 11px 14px;
     border: 1px solid transparent;
@@ -200,33 +211,14 @@ button:focus-visible,
     }
 
     .menu {
-        flex-direction: column;
-        gap: 12px;
         padding: 0 12px max(20px, env(safe-area-inset-bottom));
     }
 
     .menu ul {
-        display: flex;
-        flex: 0 0 auto;
         gap: 8px;
-        width: 100%;
-        max-height: none;
-        padding: 2px 2px 8px;
-        overflow-x: auto;
-        overflow-y: hidden;
-        scroll-snap-type: x proximity;
-        white-space: nowrap;
-        -webkit-overflow-scrolling: touch;
-    }
-
-    .menu li {
-        flex: 0 0 auto;
-        scroll-snap-align: start;
     }
 
     .menu a {
-        display: flex;
-        align-items: center;
         padding: 10px 14px;
     }
 
