@@ -1,3 +1,11 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+}
+
 h1{
     text-align: center;
     padding: 20px;
@@ -34,10 +42,10 @@ h1{
 }
 .iframe iframe {
     display: block;
-    width: 60%;
-    height: 400px;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    height: auto;
     border: 0;
-    
 }
 
 .login {
@@ -68,4 +76,39 @@ h1{
 
 #logout {
     margin: 0 0 16px;
+}
+
+@media (max-width: 700px) {
+    h1 {
+        font-size: 1.5rem;
+        padding: 16px;
+        margin: 0;
+    }
+
+    #logout {
+        margin: 0 12px 12px;
+    }
+
+    .menu {
+        flex-direction: column;
+        gap: 12px;
+        padding: 0 12px 12px;
+    }
+
+    .menu ul {
+        display: flex;
+        gap: 16px;
+        width: 100%;
+        overflow-x: auto;
+        padding: 8px 0;
+        white-space: nowrap;
+    }
+
+    .menu li + li {
+        margin-top: 0;
+    }
+
+    .iframe {
+        width: 100%;
+    }
 }
