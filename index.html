@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <link rel="stylesheet" href="style.css">
 
     <title>tv</title>
@@ -15,11 +15,13 @@
 </head>
 
 <body>
-    <h1>Minha Lista de Reprodução</h1>
-    <button id="logout" type="button">Sair</button>
+    <header class="topbar">
+        <h1>Minha Lista de Reprodução</h1>
+        <button id="logout" type="button">Sair</button>
+    </header>
     <div class="menu">
         <ul>
-            <li> <a href="https://sinalpublicoetv.vercel.app/?id=ae" target="player">AE</a></li>
+            <li> <a class="active" href="https://sinalpublicoetv.vercel.app/?id=ae" target="player">AE</a></li>
 
             <li> <a href="https://sinalpublicoetv.vercel.app/?id=amc" target="player">AMC</a></li>
 
@@ -87,13 +89,25 @@
         <main class="iframe">
 
             <iframe name="player" src="https://sinalpublicoetv.vercel.app/?id=ae" title="Player de vídeo"
-                allow="autoplay; encrypted-media; fullscreen; picture-in-picture" allowfullscreen>
+                allow="autoplay; encrypted-media; fullscreen; picture-in-picture"
+                allowfullscreen webkitallowfullscreen>
             </iframe>
 
 
         </main>
     </div>
     <script>
+        const channelLinks = document.querySelectorAll(".menu ul a");
+
+        channelLinks.forEach((link) => {
+            link.addEventListener("click", () => {
+                channelLinks.forEach((channelLink) => {
+                    channelLink.classList.remove("active");
+                });
+                link.classList.add("active");
+            });
+        });
+
         document.querySelector("#logout").addEventListener("click", () => {
             sessionStorage.removeItem("tv_demo_logged_in");
             window.location.replace("login.html");
