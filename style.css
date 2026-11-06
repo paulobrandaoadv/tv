@@ -161,9 +161,11 @@ button:focus-visible,
 
 .iframe {
     display: flex;
-    flex: 1;
+    flex: 0 0 auto;
     justify-content: center;
+    width: 80%;
     min-width: 0;
+    align-self: center;
     overflow: hidden;
     border: 1px solid var(--border);
     border-radius: 16px;
@@ -248,7 +250,6 @@ button:focus-visible,
     }
 
     .iframe {
-        width: 100%;
         border-radius: 12px;
     }
 }
