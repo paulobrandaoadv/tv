@@ -84,11 +84,36 @@ button:focus-visible,
     padding: 0 clamp(16px, 3vw, 40px) 32px;
 }
 
+.channel-nav {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    min-width: 0;
+}
+
+.scroll-arrow {
+    display: grid;
+    flex: 0 0 52px;
+    place-items: center;
+    width: 52px;
+    height: 52px;
+    padding: 0;
+    border-color: var(--accent);
+    background: #244474;
+    font-size: 1.5rem;
+    line-height: 1;
+}
+
+.scroll-arrow:disabled {
+    opacity: 0.35;
+    cursor: default;
+}
+
 .menu ul {
     display: flex;
-    flex: 0 0 auto;
+    flex: 1;
+    min-width: 0;
     gap: 8px;
-    width: 100%;
     margin: 0;
     padding: 2px 2px 8px;
     overflow-x: auto;

@@ -20,7 +20,9 @@
         <button id="logout" type="button">Sair</button>
     </header>
     <div class="menu">
-        <ul>
+        <div class="channel-nav">
+            <button class="scroll-arrow" id="scroll-left" type="button" aria-label="Ver canais anteriores">&#10094;</button>
+            <ul id="channel-list">
             <li> <a class="active" href="https://sinalpublicoetv.vercel.app/?id=ae" target="player">AE</a></li>
 
             <li> <a href="https://sinalpublicoetv.vercel.app/?id=amc" target="player">AMC</a></li>
@@ -79,10 +81,10 @@
 
             <li> <a href="https://embedcanaisdetv.xyz/e/index.php?canal=tnt" target="player">TNT</a></li>
 
-            <li> <a href="https://embedcanaisdetv.xyz/e/index.php?canal=tntseries" target="player">TNT2</a></li>
-
-        </ul>
-
+            <li> <a href="https://embedcanaisdetv.xyz/e/index.php?canal=tntseries" target="player">            TNT2</a></li>
+                        </ul>
+                        <button class="scroll-arrow" id="scroll-right" type="button" aria-label="Ver próximos canais">&#10095;</button>
+                    </div>
 
         
 
@@ -97,7 +99,29 @@
         </main>
     </div>
     <script>
-        const channelLinks = document.querySelectorAll(".menu ul a");
+        const channelList = document.querySelector("#channel-list");
+        const scrollLeft = document.querySelector("#scroll-left");
+        const scrollRight = document.querySelector("#scroll-right");
+        const channelLinks = channelList.querySelectorAll("a");
+
+        function updateArrows() {
+            const maxScroll = channelList.scrollWidth - channelList.clientWidth;
+            scrollLeft.disabled = channelList.scrollLeft <= 1;
+            scrollRight.disabled = channelList.scrollLeft >= maxScroll - 1;
+        }
+
+        function scrollChannels(direction) {
+            channelList.scrollBy({
+                left: direction * channelList.clientWidth * 0.8,
+                behavior: "smooth"
+            });
+        }
+
+        scrollLeft.addEventListener("click", () => scrollChannels(-1));
+        scrollRight.addEventListener("click", () => scrollChannels(1));
+        channelList.addEventListener("scroll", updateArrows, { passive: true });
+        window.addEventListener("resize", updateArrows);
+        updateArrows();
 
         channelLinks.forEach((link) => {
             link.addEventListener("click", () => {
