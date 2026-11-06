@@ -163,7 +163,7 @@ button:focus-visible,
     display: flex;
     flex: 0 0 auto;
     justify-content: center;
-    width: 80%;
+    width: 50%;
     min-width: 0;
     align-self: center;
     overflow: hidden;
